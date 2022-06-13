@@ -1,0 +1,32 @@
+plugins {
+    id "base"
+    id 'org.ajoberstar.reckon' version '0.16.1'
+}
+reckon {
+    // START As of 0.16.0
+    // what stages are allowed
+    stages('milestone', 'rc', 'final')
+
+
+    // how do you calculate the scope/stage
+    scopeCalc = calcScopeFromProp().or(calcScopeFromCommitMessages()) // fall back to commit message (see below) if no explicit prop set
+
+    // END As of 0.16.0
+
+
+    // omit this to use the default of 'minor'
+    defaultInferredScope = 'patch'
+
+
+
+
+
+    // omit this to use the default of tag messages including just the raw version, e.g. "1.2.3"
+    tagMessage = version.map(v -> "Version " + v)
+}
+task version(){
+
+    doLast {
+        println project.getVersion().toString()
+    }
+}
