@@ -21,7 +21,7 @@ reckon {
     scopeCalc = calcScopeFromProp().or(calcScopeFromCommitMessages()) // fall back to commit message (see below) if no explicit prop set
 
     // END As of 0.16.0
-    remote = 'origin/main'
+//    remote = 'origin/main'
 
     // omit this to use the default of 'minor'
     defaultInferredScope = 'patch'
@@ -37,7 +37,7 @@ task versionT(){
 
     doLast {
 
-        println reckon.getRemote().get()
+//        println reckon.getRemote().get()
         println project.getVersion().toString()
     }
 }
